@@ -1,0 +1,13 @@
+.my-notes__title{
+    text-align: center;
+    color: white;
+    font-weight: 800;
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+.empty-message{
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    font-weight: 900;
+}

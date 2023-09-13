@@ -1,0 +1,28 @@
+.notes {
+    padding: 10px 10%;
+    margin-bottom: 15px;
+}
+
+.note-title__display {
+    width: 100%;
+    background-color: #eee;
+    color: black;
+    font-size: 18px;
+    text-align: left;
+    padding: 18px;
+    font-weight: bolder;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.note-title__display {
+    background-color: #ccc;
+}
+
+.notes-description{
+    background-color: #fff;
+    width: 100%;
+    padding: 18px;
+    
+}
