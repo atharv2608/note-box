@@ -1,22 +1,32 @@
-import React, { useState } from 'react'
-import "../styles/Notes.css"
+import React, { useState } from "react";
+import "../styles/Notes.css";
 
 export default function Notes(props) {
-    const [isNoteVisible, setIsNoteVisible] = useState(false);
-    const onTittleButtonClick = ()=>{
-        setIsNoteVisible(!isNoteVisible);
-    }
+  const [isNoteVisible, setIsNoteVisible] = useState(false);
+  const onTittleButtonClick = () => {
+    setIsNoteVisible(!isNoteVisible);
+  };
+
+  const onDeleteButtonClick = () => {
+    props.deleteNote(props.id);
+  };
   return (
-    <div className='notes'>
+    <div className="notes">
+      <div className="title-container">
         <button className="note-title__display" onClick={onTittleButtonClick}>
-            {props.title}
+          {props.title}
         </button>
-        {
-            isNoteVisible && 
-        <div className="notes-description">
-            {props.description}
+        <div className="trash-button" onClick={onDeleteButtonClick}>
+          <i className="fa-solid fa-trash fa-2xl"></i>
         </div>
-        }
+      </div>
+
+      {isNoteVisible && (
+        <div className="notes-description">
+          <div className="note-id">{`ID: #${props.id}`}</div>
+          {props.description}
+        </div>
+      )}
     </div>
-  )
+  );
 }

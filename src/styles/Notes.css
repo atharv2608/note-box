@@ -4,7 +4,7 @@
 }
 
 .note-title__display {
-    width: 100%;
+    width: 90%;
     background-color: #eee;
     color: black;
     font-size: 18px;
@@ -22,7 +22,31 @@
 
 .notes-description{
     background-color: #fff;
-    width: 100%;
+    width: 90%;
     padding: 18px;
-    
+}
+
+.title-container{
+    display: flex;
+}
+.trash-button{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.trash-button i{
+    font-size: 18px;
+    transition: font-size 0.1s ease; 
+}
+
+.trash-button i:hover{
+    font-size: 22px;
+}
+
+.note-id{
+    font-weight: 900;
 }

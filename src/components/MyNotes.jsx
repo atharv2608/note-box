@@ -3,6 +3,7 @@ import "../styles/MyNotes.css"
 import Notes from "./Notes"
 
 export default function MyNotes(props) {
+    const deleteNote = props.deleteNote;
   return (
     <div className='my-notes-section'>
         <h2 className='my-notes__title'>Your Notes</h2>
@@ -14,6 +15,8 @@ export default function MyNotes(props) {
                         key={index}
                         title={note.title}
                         description={note.note}
+                        id={note.id}
+                        deleteNote={deleteNote}
                     />
                 ))
             }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/NoteDetailsForm.css"
+import "../styles/NoteDetailsForm.css";
 
 export default function NoteDetailsForm(props) {
   const [noteTitle, setNoteTitle] = useState("");
@@ -8,28 +8,54 @@ export default function NoteDetailsForm(props) {
   const [formVisible, setFormVisible] = useState(true);
 
 
-  const onTitleChange = (event)=>{
-    setNoteTitle(event.target.value)
-  }
-  const onKeywordsChange = (event)=>{
-    setNoteKeywords(event.target.value)
-  }
-  const onDescChange = (event)=>{
-    setNoteDescription(event.target.value)
-  }
+  function generateNoteID(notesData) {
+    let lastID = "NOTE000";
 
-  const onSubmitClick = (event)=>{
-    if(noteTitle !== "" || noteDescription !== ""){
+    notesData.forEach((item) => {
+        const numericPart = parseInt(item.id.slice(4), 10);
+        if (!isNaN(numericPart) && numericPart >= parseInt(lastID.slice(4), 10)) {
+            lastID = item.id;
+        }
+    });
+
+    let numericPart = parseInt(lastID.slice(4), 10) + 1;
+    const newId = `NOTE${numericPart.toString().padStart(3, "0")}`;
+    return newId;
+}
+
+
+  const notesArray = props.notesArray;
+  const id = generateNoteID(notesArray);
+
+  const onTitleChange = (event) => {
+    setNoteTitle(event.target.value);
+  };
+  const onKeywordsChange = (event) => {
+    setNoteKeywords(event.target.value);
+  };
+  const onDescChange = (event) => {
+    setNoteDescription(event.target.value);
+  };
+
+  const onSubmitClick = (event) => {
+    if (noteTitle !== "" || noteDescription !== "") {
       event.preventDefault();
-      const newNote = [{title: noteTitle, keywords:notekeywords, note: noteDescription}]
-      props.onAddNoteEventHandler(newNote); 
+      const newNote = [
+        {
+          id: id,
+          title: noteTitle,
+          keywords: notekeywords,
+          note: noteDescription,
+        },
+      ];
+      // console.log(newNote);
+      props.onAddNoteEventHandler(newNote);
       setNoteTitle("");
       setNoteKeywords("");
       setNoteDescription("");
       props.onBoolChangeHandler(!formVisible);
     }
-
-  }
+  };
   return (
     <form className="note-details">
       <label htmlFor="note-title__label">Title:</label>
@@ -66,7 +92,12 @@ export default function NoteDetailsForm(props) {
         onChange={onDescChange}
       ></textarea>
 
-      <button type="submit" id="add-note-button" className="add-note-button" onClick={onSubmitClick}> 
+      <button
+        type="submit"
+        id="add-note-button"
+        className="add-note-button"
+        onClick={onSubmitClick}
+      >
         Add
       </button>
     </form>

@@ -1,22 +1,30 @@
 import './App.css';
+import { useState } from 'react';
 import Header from './components/Header';
 import AddNote from './components/AddNote';
 import MyNotes from './components/MyNotes';
-import { useState } from 'react';
+import SearchNote from './components/SearchNote';
 function App() {
-  const [notesArray, setNotesArray] = useState([ ])
+  const [notesArray, setNotesArray] = useState([])
 
-  const addNoteEventHandler = (newNoteData) =>{
-      setNotesArray((previousNotes) => {
-        return [...previousNotes, ...newNoteData]
-      })
+  const addNoteEventHandler = (newNoteData) => {
+    setNotesArray((previousNotes) => {
+      return [...newNoteData, ...previousNotes]
+    })
+  }
+
+  const deleteNote = (id)=>{
+    setNotesArray(notesArray.filter((note)=>{
+      return note.id !== id;
+    }))
+    
   }
   return (
-    <div>
+    <div className='app-container'>
       <Header />
-      <AddNote onAddNoteEventHandler = {addNoteEventHandler}/>
-      <MyNotes notesArray={notesArray}/>
-
+      <AddNote onAddNoteEventHandler={addNoteEventHandler} notesArray={notesArray} />
+      <SearchNote />
+      <MyNotes notesArray={notesArray} deleteNote={deleteNote} />
     </div>
   );
 }
