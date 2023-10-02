@@ -11,11 +11,6 @@ Welcome to Note-box, a beautifully simple note-taking application built with Rea
 - **View Notes:** Easily access and read your saved notes.
 - **Delete Notes:** Remove notes you no longer need with a single click.
 
-## Demo
-
-![Note-box Demo](notebox-demo.gif)
-
-Check out our live demo: [Note-box Demo](https://your-demo-url.com)
 
 ## Getting Started
 
@@ -24,7 +19,7 @@ Follow these simple steps to get Note-box up and running on your local machine:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/note-box.git
+   git clone https://github.com/atharv2608/note-box
    ```
 
 2. Navigate to the project directory:
