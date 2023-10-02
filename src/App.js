@@ -23,7 +23,6 @@ function App() {
     <div className='app-container'>
       <Header />
       <AddNote onAddNoteEventHandler={addNoteEventHandler} notesArray={notesArray} />
-      <SearchNote />
       <MyNotes notesArray={notesArray} deleteNote={deleteNote} />
     </div>
   );
